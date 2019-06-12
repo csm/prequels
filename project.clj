@@ -13,4 +13,13 @@
                     :dependencies [[com.cognitect.aws/api "0.8.305"]
                                    [com.cognitect.aws/endpoints "1.1.11.565"]
                                    [com.cognitect.aws/rds "722.2.467.0"]]}}
-  :repl-options {:init-ns prequels.repl})
+  :repl-options {:init-ns prequels.repl}
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version"
+                   "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag"]
+                  ["deploy" "clojars"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]])
