@@ -1,5 +1,7 @@
 # prequels
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.github.csm/prequels.svg)](https://clojars.org/com.github.csm/prequels)
+
 SQL [component](https://github.com/stuartsierra/component) that can load configurations from AWS RDS.
 
 
