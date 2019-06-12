@@ -10,7 +10,7 @@ Can use [lore](https://github.com/csm/lore) to manage encrypted passwords.
 ## Usage
 
 ```clojure
-[com.github.csm/prequels "0.1.1"]
+[com.github.csm/prequels "0.1.2"]
 ```
 
 ```clojure
