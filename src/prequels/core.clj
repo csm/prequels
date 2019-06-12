@@ -47,6 +47,7 @@
                                     'prequels.impl.rds/->sql-spec
                                     arg-map)
                      :static (prequels.impl.static/->sql-spec arg-map))]
-      (assoc this :jdbc-spec sql-spec)))
+      (assoc this :jdbc-spec sql-spec
+                  :db sql-spec)))
 
   (stop [this] this))
