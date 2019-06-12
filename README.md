@@ -8,7 +8,7 @@ Can use [lore](https://github.com/csm/lore) to manage encrypted passwords.
 ## Usage
 
 ```clojure
-[com.github.csm/prequels "0.1.0"]
+[com.github.csm/prequels "0.1.1"]
 ```
 
 ```clojure
@@ -22,7 +22,7 @@ Can use [lore](https://github.com/csm/lore) to manage encrypted passwords.
                                                        :user "mysql"
                                                        :dbname "mydb"}})))
 
-; use (:sql-spec static-spec) in clojure.java.jdbc calls
+; use (:jdbc-spec static-spec) in clojure.java.jdbc calls
 
 ; RDS arg-map resolves the given RDS cluster ID.
 (def system (start (system-map

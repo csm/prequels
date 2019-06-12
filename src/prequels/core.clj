@@ -31,7 +31,7 @@
             [lore.util :refer [dynacall]]
             prequels.impl.static))
 
-(defrecord SQLConnection [secret-store connection-type arg-map sql-spec]
+(defrecord SQLConnection [secret-store connection-type arg-map jdbc-spec]
   component/Lifecycle
   (start [this]
     (let [arg-map (if (some? (:password arg-map))
@@ -47,6 +47,6 @@
                                     'prequels.impl.rds/->sql-spec
                                     arg-map)
                      :static (prequels.impl.static/->sql-spec arg-map))]
-      (assoc this :sql-spec sql-spec)))
+      (assoc this :jdbc-spec sql-spec)))
 
   (stop [this] this))

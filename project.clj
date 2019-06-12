@@ -12,7 +12,10 @@
              :repl {:source-paths ["scripts"]
                     :dependencies [[com.cognitect.aws/api "0.8.305"]
                                    [com.cognitect.aws/endpoints "1.1.11.565"]
-                                   [com.cognitect.aws/rds "722.2.467.0"]]}}
+                                   [com.cognitect.aws/rds "722.2.467.0"]
+                                   [com.cognitect.aws/kms "718.2.448.0"]
+                                   [org.clojure/java.jdbc "0.4.0"]
+                                   [mysql/mysql-connector-java "6.0.6"]]}}
   :repl-options {:init-ns prequels.repl}
   :release-tasks [["vcs" "assert-committed"]
                   ["change" "version"
