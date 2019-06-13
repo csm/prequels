@@ -25,3 +25,5 @@
                                                                   :db-name db-name
                                                                   :user db-user}})
                                  {:secret-store :secret-store}))))
+
+(require '[next.jdbc :as jdbc])

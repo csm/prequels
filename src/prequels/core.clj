@@ -42,12 +42,11 @@
                           (throw (ex-info "failed to decrypt password" {:result result}))
                           (assoc arg-map :password (String. ^"[B" (:plaintext result)))))
                       arg-map))
-          sql-spec (case connection-type
-                     :rds (dynacall 'com.cognitect.aws/rds
-                                    'prequels.impl.rds/->sql-spec
-                                    arg-map)
-                     :static (prequels.impl.static/->sql-spec arg-map))]
-      (assoc this :jdbc-spec sql-spec
-                  :db sql-spec)))
+          data-source (case connection-type
+                        :rds (dynacall 'com.cognitect.aws/rds
+                                       'prequels.impl.rds/->rds-data-source
+                                       arg-map)
+                        :static (prequels.impl.static/->sql-spec arg-map))]
+      (assoc this :db data-source)))
 
   (stop [this] this))

@@ -1,5 +1,6 @@
-(ns prequels.impl.static)
+(ns prequels.impl.static
+  (:require [next.jdbc :as jdbc]))
 
 (defn ->sql-spec
   [arg-map]
-  arg-map)
+  (jdbc/get-datasource arg-map))
