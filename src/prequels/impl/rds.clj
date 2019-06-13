@@ -4,7 +4,18 @@
             [java-time :as t]
             [next.jdbc :as jdbc])
   (:import [java.time Instant]
-           [javax.sql DataSource]))
+           [javax.sql DataSource]
+           [java.time.temporal ChronoUnit]))
+
+(defn- ->duration
+  [d]
+  (cond
+    (t/duration? d) d
+    (t/period? d) (let [start (t/local-date-time)
+                        end (t/plus start d)
+                        millis (.until start end ChronoUnit/MILLIS)]
+                    (t/duration millis))
+    :else (t/duration d)))
 
 (defn ->sql-spec
   [{:keys [cluster-id read-only? rds-client aws dbname user password] :or {read-only? true}}]
@@ -28,16 +39,16 @@
        :trustCertificateKeyStorePassword "com.github.csm/prequels"})))
 
 (defn ->rds-data-source
-  [{:keys [expires]
-    :or {expires (t/minutes 5)}
-    :as args}]
+  [{:keys [expires] :as args}]
   (let [cache (atom nil)
+        expires (some-> expires ->duration)
         get-ds (fn get-ds []
                  (swap! cache (fn [ds]
                                 (if (or (nil? ds)
-                                        (t/after? (t/instant) (:expires ds)))
+                                        (and (some? (:expires ds))
+                                             (t/after? (t/instant) (:expires ds))))
                                   {:datasource (jdbc/get-datasource (->sql-spec args))
-                                   :expires (t/plus (t/instant) expires)}
+                                   :expires (some->> expires (t/plus (t/instant)))}
                                   ds))))]
     (reify DataSource
       (getConnection [this]

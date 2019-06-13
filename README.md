@@ -4,13 +4,12 @@
 
 SQL [component](https://github.com/stuartsierra/component) that can load configurations from AWS RDS.
 
-
 Can use [lore](https://github.com/csm/lore) to manage encrypted passwords.
 
 ## Usage
 
 ```clojure
-[com.github.csm/prequels "0.1.2"]
+[com.github.csm/prequels "0.1.3"]
 ```
 
 ```clojure
@@ -40,5 +39,5 @@ Can use [lore](https://github.com/csm/lore) to manage encrypted passwords.
 
 You will need the [Cognitect AWS API](https://github.com/cognitect-labs/aws-api) in your dependencies to resolve RDS clusters.
 
-You'll also likely want [java.jdbc](https://github.com/clojure/java.jdbc) and the appropriate
+You'll also likely want [next.jdbc](https://github.com/seancorfield/next-jdbc) and the appropriate
 JDBC driver for your database.
