@@ -5,7 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [com.stuartsierra/component "0.3.2"]
-                 [com.github.csm/lore "0.1.0"]
+                 [com.github.csm/lore "0.1.2"]
                  [seancorfield/next.jdbc "1.0.0"]
                  [clojure.java-time "0.3.2"]]
   :profiles {:provided {:dependencies [[com.cognitect.aws/api "0.8.305"]
